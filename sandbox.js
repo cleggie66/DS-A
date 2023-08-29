@@ -1,57 +1,26 @@
 /**
- * @param {string} s
- * @param {number} k
- * @return {number}
+ * @param {string} s1
+ * @param {string} s2
+ * @return {boolean}
  */
-var characterReplacement = function (s, k) {
 
-    const highestValue = (obj) => {
-        let arr = Object.values(obj);
-        if (!arr.length) return 0;
-        let max = Math.max(...arr);
-        return max;
-    };
+var checkInclusion = function (s1, s2) {
+   if (s1.length > s2.length) return false;
+   let s1Map = {};
+   let s2Map = {};
 
-    let leftIndex = 0;
-    let rightIndex = 1;
-    let result = 1;
-
-    let numbers = { [s[0]]: 1 };
-    let char = s[rightIndex];
-
-
-    while (rightIndex <= s.length) {
-
-        let subLength = s.slice(leftIndex, rightIndex).length;
-        let highestNum = highestValue(numbers);
-
-        if (subLength - highestNum <= k) {
-            char = s[rightIndex];
-            rightIndex += 1;
-
-            if (numbers[char]) {
-                numbers[char] += 1;
-            } else {
-                numbers[char] = 1;
-            };
-
-            if (subLength > result) {
-                result = subLength
-            };
-
-        } else {
-            char = s[leftIndex];
-            numbers[char] = numbers[char] - 1 || 0;
-            leftIndex += 1;
-        }
-
+    for (let i = 0; i < 26; i++) {
+        s1Map[String.fromCharCode(i + 97)] = 0;
+        s2Map[String.fromCharCode(i + 97)] = 0;
     }
 
-    return result;
+//    for (let i = 0; i < s1.length; i++) {
 
+//    }
+
+    return s2Map
 };
 
-// console.log(characterReplacement("ABAB", 2));
-// console.log(characterReplacement("AABABBA", 1));
-console.log(characterReplacement("ABAA", 0));
-
+console.log(checkInclusion("ab", "eidbaooo")); //true
+console.log(checkInclusion("ab", "eidboaoo")); //false
+console.log(checkInclusion("abc", "bbbca")); //true
