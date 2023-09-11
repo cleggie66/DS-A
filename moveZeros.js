@@ -12,7 +12,7 @@ var moveZeroes = function (nums) { // [0,1,0]
             console.log(i)
             nums[nums.length - 1] = 0;
         };
-    }
+    };
     return nums;
 };
 
