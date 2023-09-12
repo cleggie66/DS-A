@@ -7,7 +7,7 @@ var moveZeroes = function (nums) { // [0,1,0]
                 if (nums[j + 1] !== undefined) {
                     nums[j] = nums[j + 1];
                     num = nums[i]
-                }
+                };
             };
             console.log(i)
             nums[nums.length - 1] = 0;
